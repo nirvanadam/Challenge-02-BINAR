@@ -1,5 +1,5 @@
 // import { checkTypeNumber } from "./case2.js";
-// const importFunc = require("./case2");
+const { checkTypeNumber } = require("./case2");
 
 checkEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

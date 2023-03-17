@@ -1,4 +1,4 @@
-exports.checkTypeNumber = (number) => {
+checkTypeNumber = (number) => {
   if (number == undefined) {
     return "Error: Bro where is the parameter?";
   } else if (typeof number != "number") {
@@ -10,11 +10,11 @@ exports.checkTypeNumber = (number) => {
   }
 };
 
-// export { checkTypeNumber };
-
 console.log(checkTypeNumber(10));
 console.log(checkTypeNumber(3));
 console.log(checkTypeNumber("3"));
 console.log(checkTypeNumber({}));
 console.log(checkTypeNumber([]));
 console.log(checkTypeNumber());
+
+exports.checkTypeNumber = checkTypeNumber;
