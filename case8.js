@@ -45,46 +45,31 @@ function getInfoPenjualan(dataPenjualan) {
   dataPenjualan.forEach(function (buku) {
     totalHargaJual += buku.hargaJual * buku.totalTerjual;
     totalHargaBeli += buku.hargaBeli * (buku.totalTerjual + buku.sisaStok);
-    totalKeuntungan = "Rp " + totalHargaJual - totalHargaBeli;
+    totalKeuntungan = totalHargaJual - totalHargaBeli;
   });
 
   // Rumus Produk Buku Terlaris
   let maxTerjual = 0;
-  let terlaris = null;
+  let bukuTerlaris = null;
+  let penulisTerlaris = null;
 
   dataPenjualanNovel.forEach((produk) => {
     if (produk.totalTerjual > maxTerjual) {
       maxTerjual = produk.totalTerjual;
-      terlaris = produk.namaProduk;
+      bukuTerlaris = produk.namaProduk;
+      penulisTerlaris = produk.penulis;
     }
   });
 
-  // Rumus Penulis Buku Terlaris
-  const penulisTerjual = {};
-  dataPenjualanNovel.forEach((produk) => {
-    if (!penulisTerjual[produk.penulis]) {
-      penulisTerjual[produk.penulis] = 0;
-    }
-    penulisTerjual[produk.penulis] += produk.totalTerjual;
-  });
-  let maxBukuTerjual = 0;
-  let bukuTerlaris = null;
-  for (let penulis in penulisTerjual) {
-    if (penulisTerjual[penulis] > maxBukuTerjual) {
-      maxTerjual = penulisTerjual[penulis];
-      bukuTerlaris = penulis;
-    }
-  }
-
-  // Rumus Presentase Keuntungan
+  // Rumus Persentase Keuntungan
   let persentaseKeuntungan = (totalKeuntungan / totalHargaBeli) * 100;
 
-  // Objek Info Penjualana
+  // Objek Info Penjualan
   const objInfoPenjualan = {};
-  objInfoPenjualan.totalKeuntungan = totalKeuntungan;
-  objInfoPenjualan.totalModal = totalHargaBeli;
-  objInfoPenjualan.produkBukuTerlaris = terlaris;
-  objInfoPenjualan.penulisTerlaris = bukuTerlaris;
+  objInfoPenjualan.totalKeuntungan = "Rp " + totalKeuntungan;
+  objInfoPenjualan.totalModal = "Rp " + totalHargaBeli;
+  objInfoPenjualan.produkBukuTerlaris = bukuTerlaris;
+  objInfoPenjualan.penulisTerlaris = penulisTerlaris;
   objInfoPenjualan.persentaseKeuntungan = Math.round(persentaseKeuntungan) + "%";
 
   return objInfoPenjualan;
