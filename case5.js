@@ -6,12 +6,10 @@ function getSplitName(personName) {
   const splitName = personName.split(" ");
   const totalSyllables = splitName.length;
 
+  const splitNameObj = {};
   if (totalSyllables > 3) {
     return "ERROR: This function is only for 3 characters name!";
-  }
-
-  const splitNameObj = {};
-  if (totalSyllables === 1) {
+  } else if (totalSyllables === 1) {
     splitNameObj.firstName = splitName[0];
     splitNameObj.middleName = null;
     splitNameObj.lastName = null;
