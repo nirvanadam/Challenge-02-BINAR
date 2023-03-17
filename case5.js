@@ -13,13 +13,16 @@ function getSplitName(personName) {
   const splitNameObj = {};
   if (totalSyllables === 1) {
     splitNameObj.firstName = splitName[0];
+    splitNameObj.middleName = null;
+    splitNameObj.lastName = null;
   } else if (totalSyllables === 2) {
     splitNameObj.firstName = splitName[0];
-    splitNameObj.secondName = splitName[1];
+    splitNameObj.middleName = null;
+    splitNameObj.lastName = splitName[splitName.length - 1];
   } else if (totalSyllables === 3) {
     splitNameObj.firstName = splitName[0];
-    splitNameObj.secondName = splitName[1];
-    splitNameObj.thirdName = splitName[2];
+    splitNameObj.middleName = splitName[1];
+    splitNameObj.lastName = splitName[2];
   }
 
   return splitNameObj;
