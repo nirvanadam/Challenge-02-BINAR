@@ -48,11 +48,6 @@ function getInfoPenjualan(dataPenjualan) {
     totalKeuntungan = "Rp " + totalHargaJual - totalHargaBeli;
   });
 
-  // // Rumus totalModal
-  // dataPenjualan.forEach(function (buku) {
-  //   totalModal += buku.hargaBeli * (buku.totalTerjual + buku.sisaStok);
-  // });
-
   // Rumus Produk Buku Terlaris
   let maxTerjual = 0;
   let terlaris = null;
